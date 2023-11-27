@@ -1,0 +1,18 @@
+.hourly-weather {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #FFF;
+  border-radius: 0 0 8px 8px;
+}
+
+.hourly-weather .hourly-temps {
+  padding: 30px 10px;
+  text-align: center;
+  border-right: 1px solid #eee;
+}
+
+.hourly-weather .hourly-temps p {
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #4F4A45;
+}

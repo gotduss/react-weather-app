@@ -1,7 +1,10 @@
 /* Import */
 import { useState, useEffect } from 'react';
-import { VCROS_API_URL, VCROS_API_KEY } from "../Data";
+import { VCROS_API_URL, VCROS_API_KEY, hourlyResponsive } from "../Data";
+import Carousel from 'react-multi-carousel';
 import CurrentWeather from '../CurrentWeather';
+import HourlyWeather from '../CurrentWeather/HourlyWeather';
+import 'react-multi-carousel/lib/styles.css';
 
 /* Weather component */
 const WeatherCard = () => {
@@ -81,6 +84,13 @@ const WeatherCard = () => {
             humidity={currentWeatherData.humidity}
             hourlyTemps={currentWeatherData.hourlyTemps}
           />
+          <section className="hourly-weather">
+            {currentWeatherData.hourlyTemp && (<Carousel responsive={hourlyResponsive} arrows={true} swipeable={true} draggable={true}>
+              {currentWeatherData.hourlyTemp.map((hour, index) => 
+                <HourlyWeather key={index} hourlyTemp={hour.temp} hourlyTime={hour.datetimeEpoch} hourlyImgName={hour.icon} />
+              )}
+            </Carousel>)}
+          </section>
         </>
       )}
     </>
