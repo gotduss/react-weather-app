@@ -12,7 +12,19 @@
 }
 
 .hourly-weather .hourly-temps p {
+  color: #4F4A45;
+}
+
+.hourly-weather .hourly-temps p.current-temp {
   margin-bottom: 0;
   font-weight: 600;
-  color: #4F4A45;
+}
+
+/* Current */
+.hourly-weather .hourly-temps.current {
+  background-color: #4F4A45;
+}
+
+.hourly-weather .hourly-temps.current p {
+  color: #FFFFFF;
 }

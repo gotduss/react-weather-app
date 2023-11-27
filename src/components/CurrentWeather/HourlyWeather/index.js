@@ -13,12 +13,13 @@ const HourlyWeather = ({
   time = time.getHours();
   let now = Date.now();
   now = new Date(now).getHours();
+  const imgCurrent = time !== now ? `images/${hourlyImgName}-dark.svg` : `images/${hourlyImgName}.svg`;
   
   return (
       <div className={`hourly-temps${time !== now ? '' : ' current'}`}>
         <p>{time !== now ? time : 'Now'}</p>
-        <figure><img src={`images/${hourlyImgName}-dark.svg`} alt={hourlyImgName} width="55" /></figure>
-        <p>{hourlyTemp}&deg;C</p>
+        <figure><img src={imgCurrent} alt={hourlyImgName} width="55" /></figure>
+        <p className="current-temp">{hourlyTemp}&deg;C</p>
       </div>
   );
 }

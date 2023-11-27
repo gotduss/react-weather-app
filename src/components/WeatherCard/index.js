@@ -20,6 +20,7 @@ const WeatherCard = () => {
     pressure: '',
     humidity: '',
     hourlyTemp: [],
+    currentHour: 0,
     error: false,
     errorMessage: '',
   });
@@ -53,6 +54,7 @@ const WeatherCard = () => {
           pressure: data.days[0]?.pressure,
           humidity: data.days[0]?.humidity,
           hourlyTemp: data.days[0]?.hours || [],
+          currentHour: new Date().getHours(),
         });
       } catch (error) {
         setCurrentWeatherData({
@@ -85,7 +87,14 @@ const WeatherCard = () => {
             hourlyTemps={currentWeatherData.hourlyTemps}
           />
           <section className="hourly-weather">
-            {currentWeatherData.hourlyTemp && (<Carousel responsive={hourlyResponsive} arrows={true} swipeable={true} draggable={true}>
+            {currentWeatherData.hourlyTemp && (<Carousel
+              responsive={hourlyResponsive}
+              infinite={true}
+              arrows={true}
+              swipeable={true}
+              draggable={true}
+              centerMode={true}
+              additionalTransfrom={-currentWeatherData.currentHour * 100}>
               {currentWeatherData.hourlyTemp.map((hour, index) => 
                 <HourlyWeather key={index} hourlyTemp={hour.temp} hourlyTime={hour.datetimeEpoch} hourlyImgName={hour.icon} />
               )}
