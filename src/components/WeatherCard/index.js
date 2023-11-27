@@ -16,6 +16,7 @@ const WeatherCard = () => {
     highestTemp: '',
     pressure: '',
     humidity: '',
+    hourlyTemp: [],
     error: false,
     errorMessage: '',
   });
@@ -48,6 +49,7 @@ const WeatherCard = () => {
           highestTemp: data.days[0]?.tempmax,
           pressure: data.days[0]?.pressure,
           humidity: data.days[0]?.humidity,
+          hourlyTemp: data.days[0]?.hours || [],
         });
       } catch (error) {
         setCurrentWeatherData({

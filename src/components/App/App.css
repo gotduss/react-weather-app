@@ -1,0 +1,28 @@
+body {
+  background-color: #F6F1EE;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+}
+
+a, a::after, a::before {
+  transition: all .3s ease;
+}
+a:hover {
+  text-decoration: none;
+}
+
+/* Google icons */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}

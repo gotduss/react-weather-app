@@ -1,0 +1,37 @@
+header {
+  background-color: #4F4A45;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  list-style-type: none;
+}
+
+header ul > li {
+  padding: 10px 10px 8px 10px;
+}
+
+header ul a {
+  color: white;
+  text-transform: uppercase;
+}
+
+header ul a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  margin: 5px auto 0 auto;
+  background-color: white;
+}
+
+header ul a:hover {
+  color: white;
+}
+
+header ul a:hover::after {
+  content: '';
+  width: 100%;
+}
