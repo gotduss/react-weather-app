@@ -65,7 +65,16 @@ const WeatherCard = () => {
       }
     }
     fetchWeatherData();
-  }, []);
+  }, [currentWeatherData.unit]);
+
+  // Used to switch between metric (Degrees) and us (Fahrenheit)
+  const toggleUnit = () => {
+    const newUnit = currentWeatherData.unit === 'metric' ? 'us' : 'metric';
+    setCurrentWeatherData({
+      ...currentWeatherData,
+      unit: newUnit,
+    });
+  };
 
   return (
     <>
@@ -75,6 +84,16 @@ const WeatherCard = () => {
         <p className="error-message">{currentWeatherData.errorMessage}</p>
       ) : (
         <>
+          <section className="unit-toggle">
+            <label>
+              <input
+                type="checkbox"
+                checked={currentWeatherData.unit === 'us'}
+                onChange={toggleUnit}
+              />
+              Fahrenheit
+            </label>
+          </section>
           <CurrentWeather
             currentDate={currentWeatherData.currentDate}
             address={currentWeatherData.address}
@@ -84,6 +103,7 @@ const WeatherCard = () => {
             highestTemp={currentWeatherData.highestTemp}
             pressure={currentWeatherData.pressure}
             humidity={currentWeatherData.humidity}
+            unit={currentWeatherData.unit}
             hourlyTemps={currentWeatherData.hourlyTemps}
           />
           <section className="hourly-weather">
@@ -96,7 +116,7 @@ const WeatherCard = () => {
               centerMode={true}
               additionalTransfrom={-currentWeatherData.currentHour * 100}>
               {currentWeatherData.hourlyTemp.map((hour, index) => 
-                <HourlyWeather key={index} hourlyTemp={hour.temp} hourlyTime={hour.datetimeEpoch} hourlyImgName={hour.icon} />
+                <HourlyWeather key={index} hourlyTemp={hour.temp} hourlyTime={hour.datetimeEpoch} hourlyImgName={hour.icon} unit={currentWeatherData.unit} />
               )}
             </Carousel>)}
           </section>

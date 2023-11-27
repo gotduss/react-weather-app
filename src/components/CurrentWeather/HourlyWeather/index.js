@@ -5,7 +5,8 @@ import "./styles.css";
 const HourlyWeather = ({
   hourlyTime,
   hourlyImgName,
-  hourlyTemp
+  hourlyTemp,
+  unit
 }) => {
   const unixTimestamp = hourlyTime;
   const timestamp = unixTimestamp * 1000;
@@ -19,7 +20,7 @@ const HourlyWeather = ({
       <div className={`hourly-temps${time !== now ? '' : ' current'}`}>
         <p>{time !== now ? time : 'Now'}</p>
         <figure><img src={imgCurrent} alt={hourlyImgName} width="55" /></figure>
-        <p className="current-temp">{hourlyTemp}&deg;C</p>
+        <p className="current-temp">{hourlyTemp}&deg;{unit === 'metric' ? 'C' : 'F'}</p>
       </div>
   );
 }

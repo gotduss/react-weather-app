@@ -11,7 +11,8 @@ const CurrentWeather = ({
   lowestTemp,
   highestTemp,
   pressure,
-  humidity
+  humidity,
+  unit
 }) => {
   let today = new Date(currentDate);
   const day = today.getDay();
@@ -27,7 +28,7 @@ const CurrentWeather = ({
           {address}
         </address>
         <figure><img src={`images/${imgName}.svg`} alt={imgName} width="160" /></figure>
-        <div className="current-temp">{currentTemp}&deg;C</div>
+        <div className="current-temp">{currentTemp}&deg;{unit === 'metric' ? 'C' : 'F'}</div>
         <dl className="temps">
           <div className="lowest">
             <dt>Low</dt>
