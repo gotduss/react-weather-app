@@ -1,0 +1,69 @@
+.input-toggle-form .toggle-label {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 30px;
+  margin: 0 auto 20px auto;
+  background-color: #4F4A45;
+  border-radius: 20px;
+}
+
+.input-toggle-form .toggle-label input {
+  display: none;
+}
+
+.input-toggle-form .toggle-slider {
+  position: absolute;
+  width: 26px;
+  top: 2px;
+  bottom: 2px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  transform: translateX(0); /* Start the slider off-screen to the left */
+  transition: transform 0.3s ease;
+}
+
+.input-toggle-form .toggle-label.metric .toggle-slider {
+  left: 2px;
+}
+
+.input-toggle-form .toggle-label.us .toggle-slider {
+  transform: translateX(32px);
+}
+
+.input-toggle-form .toggle-label .toggle-text {
+  position: absolute;
+  top: 50%;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4F4A45;
+  transition: 0.3s;
+  transform: translateY(-50%);
+}
+
+.input-toggle-form .toggle-label.metric .toggle-text.metric,
+.input-toggle-form .toggle-label.us .toggle-text.us {
+  color: #f58449;
+}
+
+.input-toggle-form .toggle-label .toggle-text.metric {
+  left: 6px; /* Adjust the left position for Celsius */
+}
+
+.input-toggle-form .toggle-label .toggle-text.us {
+  right: 8px; /* Adjust the right position for Fahrenheit */
+}
+
+.input-toggle-form .toggle-label input:checked + .toggle-slider {
+  background-color: #FFFFFF; /* Change color when toggled */
+}
+
+.input-toggle-form .toggle-label input:not(:checked) + .toggle-slider {
+  background-color: #FFFFFF; /* Default color when not toggled */
+}
+
+@media (min-width: 576px) {
+  .input-toggle-form {
+    position: absolute;
+  }
+}

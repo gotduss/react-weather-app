@@ -4,6 +4,7 @@ import { VCROS_API_URL, VCROS_API_KEY, hourlyResponsive } from "../Data";
 import Carousel from 'react-multi-carousel';
 import CurrentWeather from '../CurrentWeather';
 import HourlyWeather from '../CurrentWeather/HourlyWeather';
+import InputToggle from '../Actions/InputToggle';
 import 'react-multi-carousel/lib/styles.css';
 
 /* Weather component */
@@ -68,8 +69,7 @@ const WeatherCard = () => {
   }, [currentWeatherData.unit]);
 
   // Used to switch between metric (Degrees) and us (Fahrenheit)
-  const toggleUnit = () => {
-    const newUnit = currentWeatherData.unit === 'metric' ? 'us' : 'metric';
+  const handleToggleUnit = (newUnit) => {
     setCurrentWeatherData({
       ...currentWeatherData,
       unit: newUnit,
@@ -84,28 +84,21 @@ const WeatherCard = () => {
         <p className="error-message">{currentWeatherData.errorMessage}</p>
       ) : (
         <>
-          <section className="unit-toggle">
-            <label>
-              <input
-                type="checkbox"
-                checked={currentWeatherData.unit === 'us'}
-                onChange={toggleUnit}
-              />
-              Fahrenheit
-            </label>
+          <section className="current-weather-card" style={{ backgroundImage: "url(images/brisbane-buildings-outlined-day.jpg)" }}>
+            <InputToggle unit={currentWeatherData.unit} onChange={handleToggleUnit} />
+            <CurrentWeather
+              currentDate={currentWeatherData.currentDate}
+              address={currentWeatherData.address}
+              imgName={currentWeatherData.imgName}
+              currentTemp={currentWeatherData.currentTemp}
+              lowestTemp={currentWeatherData.lowestTemp}
+              highestTemp={currentWeatherData.highestTemp}
+              pressure={currentWeatherData.pressure}
+              humidity={currentWeatherData.humidity}
+              unit={currentWeatherData.unit}
+              hourlyTemps={currentWeatherData.hourlyTemps}
+            />
           </section>
-          <CurrentWeather
-            currentDate={currentWeatherData.currentDate}
-            address={currentWeatherData.address}
-            imgName={currentWeatherData.imgName}
-            currentTemp={currentWeatherData.currentTemp}
-            lowestTemp={currentWeatherData.lowestTemp}
-            highestTemp={currentWeatherData.highestTemp}
-            pressure={currentWeatherData.pressure}
-            humidity={currentWeatherData.humidity}
-            unit={currentWeatherData.unit}
-            hourlyTemps={currentWeatherData.hourlyTemps}
-          />
           <section className="hourly-weather">
             {currentWeatherData.hourlyTemp && (<Carousel
               responsive={hourlyResponsive}
