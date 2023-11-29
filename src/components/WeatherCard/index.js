@@ -4,6 +4,7 @@ import { VCROS_API_URL, VCROS_API_KEY, hourlyResponsive } from "../Data";
 import Carousel from 'react-multi-carousel';
 import CurrentWeather from '../CurrentWeather';
 import HourlyWeather from '../CurrentWeather/HourlyWeather';
+import SearchForm from '../Actions/SearchForm';
 import InputToggle from '../Actions/InputToggle';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -25,6 +26,14 @@ const WeatherCard = () => {
     error: false,
     errorMessage: '',
   });
+
+  // Update the location in the state and trigger a new fetch
+  const handleSearchSubmit = (newLocation) => {
+    setCurrentWeatherData({
+      ...currentWeatherData,
+      location: newLocation,
+    });
+  };
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -66,7 +75,7 @@ const WeatherCard = () => {
       }
     }
     fetchWeatherData();
-  }, [currentWeatherData.unit]);
+  }, [currentWeatherData.unit, currentWeatherData.location]);
 
   // Used to switch between metric (Degrees) and us (Fahrenheit)
   const handleToggleUnit = (newUnit) => {
@@ -84,6 +93,9 @@ const WeatherCard = () => {
         <p className="error-message">{currentWeatherData.errorMessage}</p>
       ) : (
         <>
+          <section className="location-search">
+            <SearchForm onSubmit={handleSearchSubmit} />
+          </section>
           <section className="current-weather-card" style={{ backgroundImage: "url(images/brisbane-buildings-outlined-day.jpg)" }}>
             <InputToggle unit={currentWeatherData.unit} onChange={handleToggleUnit} />
             <CurrentWeather
