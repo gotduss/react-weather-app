@@ -1,7 +1,6 @@
 .current-weather-card {
   position: relative;
   max-width: 800px;
-  margin: 0 auto;
   padding: 30px;
   /* background: rgb(245,133,73);
   background: linear-gradient(135deg, rgba(245,133,73,1) 0%, rgba(242,166,90,1) 100%); */

@@ -31,3 +31,10 @@ a:hover {
 ::placeholder {
   color: #EEE;
 }
+
+.container {
+  max-width: 1300px;
+  margin: 30px auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}

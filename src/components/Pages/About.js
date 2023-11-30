@@ -7,7 +7,9 @@ const About = () => {
         <>
             <Header />
             <main>
-                <h1>About page</h1>
+                <div className="container">
+                    <h1>About page</h1>
+                </div>
             </main>
         </>
     )

@@ -8,8 +8,10 @@ const Weather = () => {
         <>
             <Header />
             <main>
-                <h1>Weather</h1>
-                <WeatherCard />
+                <div className="container">
+                    <h1>Weather</h1>
+                    <WeatherCard />
+                </div>
             </main>
         </>
     )

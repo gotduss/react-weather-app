@@ -8,8 +8,10 @@ const Contact = () => {
         <>
             <Header />
             <main>
-                <h1>Contact page</h1>
-                <ContactForm />
+                <div className="container">
+                    <h1>Contact page</h1>
+                    <ContactForm />
+                </div>
             </main>
         </>
     )

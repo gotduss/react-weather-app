@@ -93,38 +93,43 @@ const WeatherCard = () => {
         <p className="error-message">{currentWeatherData.errorMessage}</p>
       ) : (
         <>
-          <section className="location-search">
-            <SearchForm onSubmit={handleSearchSubmit} />
-          </section>
-          <section className="current-weather-card" style={{ backgroundImage: "url(images/brisbane-buildings-outlined-day.jpg)" }}>
-            <InputToggle unit={currentWeatherData.unit} onChange={handleToggleUnit} />
-            <CurrentWeather
-              currentDate={currentWeatherData.currentDate}
-              address={currentWeatherData.address}
-              imgName={currentWeatherData.imgName}
-              currentTemp={currentWeatherData.currentTemp}
-              lowestTemp={currentWeatherData.lowestTemp}
-              highestTemp={currentWeatherData.highestTemp}
-              pressure={currentWeatherData.pressure}
-              humidity={currentWeatherData.humidity}
-              unit={currentWeatherData.unit}
-              hourlyTemps={currentWeatherData.hourlyTemps}
-            />
-          </section>
-          <section className="hourly-weather">
-            {currentWeatherData.hourlyTemp && (<Carousel
-              responsive={hourlyResponsive}
-              infinite={true}
-              arrows={true}
-              swipeable={true}
-              draggable={true}
-              centerMode={true}
-              additionalTransfrom={-currentWeatherData.currentHour * 100}>
-              {currentWeatherData.hourlyTemp.map((hour, index) => 
-                <HourlyWeather key={index} hourlyTemp={hour.temp} hourlyTime={hour.datetimeEpoch} hourlyImgName={hour.icon} unit={currentWeatherData.unit} />
-              )}
-            </Carousel>)}
-          </section>
+          <div className="col-left">
+            <section className="location-search">
+              <SearchForm onSubmit={handleSearchSubmit} />
+            </section>
+            <section className="current-weather-card" style={{ backgroundImage: "url(images/brisbane-buildings-outlined-day.jpg)" }}>
+              <InputToggle unit={currentWeatherData.unit} onChange={handleToggleUnit} />
+              <CurrentWeather
+                currentDate={currentWeatherData.currentDate}
+                address={currentWeatherData.address}
+                imgName={currentWeatherData.imgName}
+                currentTemp={currentWeatherData.currentTemp}
+                lowestTemp={currentWeatherData.lowestTemp}
+                highestTemp={currentWeatherData.highestTemp}
+                pressure={currentWeatherData.pressure}
+                humidity={currentWeatherData.humidity}
+                unit={currentWeatherData.unit}
+                hourlyTemps={currentWeatherData.hourlyTemps}
+              />
+            </section>
+            <section className="hourly-weather">
+              {currentWeatherData.hourlyTemp && (<Carousel
+                responsive={hourlyResponsive}
+                infinite={true}
+                arrows={true}
+                swipeable={true}
+                draggable={true}
+                centerMode={true}
+                additionalTransfrom={-currentWeatherData.currentHour * 100}>
+                {currentWeatherData.hourlyTemp.map((hour, index) => 
+                  <HourlyWeather key={index} hourlyTemp={hour.temp} hourlyTime={hour.datetimeEpoch} hourlyImgName={hour.icon} unit={currentWeatherData.unit} />
+                )}
+              </Carousel>)}
+            </section>
+          </div>
+          <div className="col-right">
+            <h2>col-right</h2>
+          </div>
         </>
       )}
     </>
