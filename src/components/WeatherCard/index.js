@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { VCROS_API_URL, VCROS_API_KEY, hourlyResponsive } from "../Data";
 import Carousel from 'react-multi-carousel';
+import WeeklyWeather from '../WeeklyWeather';
 import CurrentWeather from '../CurrentWeather';
 import HourlyWeather from '../CurrentWeather/HourlyWeather';
 import SearchForm from '../Actions/SearchForm';
@@ -26,6 +27,8 @@ const WeatherCard = () => {
     error: false,
     errorMessage: '',
   });
+
+  const [weeklyWeatherData, setWeeklyWeatherData] = useState([]);
 
   // Update the location in the state and trigger a new fetch
   const handleSearchSubmit = (newLocation) => {
@@ -66,6 +69,8 @@ const WeatherCard = () => {
           hourlyTemp: data.days[0]?.hours || [],
           currentHour: new Date().getHours(),
         });
+
+        setWeeklyWeatherData(data.days);
       } catch (error) {
         setCurrentWeatherData({
           ...currentWeatherData,
@@ -87,13 +92,13 @@ const WeatherCard = () => {
 
   return (
     <>
-      <h2>Current Weather</h2>
       {/* <button onClick={fetchWeatherData}>Click me!</button> */}
       {currentWeatherData.error ? (
         <p className="error-message">{currentWeatherData.errorMessage}</p>
       ) : (
         <>
           <div className="col-left">
+            <h2>Current Weather</h2>
             <section className="location-search">
               <SearchForm onSubmit={handleSearchSubmit} />
             </section>
@@ -120,16 +125,29 @@ const WeatherCard = () => {
                 swipeable={true}
                 draggable={true}
                 centerMode={true}
-                additionalTransfrom={-currentWeatherData.currentHour * 100}>
+                additionalTransfrom={-currentWeatherData.currentHour * (100 / 1.275)}>
                 {currentWeatherData.hourlyTemp.map((hour, index) => 
                   <HourlyWeather key={index} hourlyTemp={hour.temp} hourlyTime={hour.datetimeEpoch} hourlyImgName={hour.icon} unit={currentWeatherData.unit} />
                 )}
               </Carousel>)}
             </section>
           </div>
-          <div className="col-right">
-            <h2>col-right</h2>
-          </div>
+          <aside className="sidebar">
+            <h2>Weekly Weather</h2>
+            <section className="weekly-weather">
+              {console.log('weeklyWeatherData', weeklyWeatherData.slice(0, 7))}
+              {weeklyWeatherData.slice(0, 7).map((day, index) => 
+                <WeeklyWeather
+                  key={index}
+                  day={day.datetime}
+                  dailyLowTemp={day.tempmin}
+                  dailyHighTemp={day.tempmax}
+                  dailyImgName={day.icon}
+                  unit={currentWeatherData.unit}
+                />
+              )}
+            </section>
+          </aside>
         </>
       )}
     </>
