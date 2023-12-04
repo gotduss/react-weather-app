@@ -1,3 +1,4 @@
+/* Toggle form */
 .input-toggle-form .toggle-label {
   position: relative;
   display: block;
@@ -66,4 +67,44 @@
   .input-toggle-form {
     position: absolute;
   }
+}
+
+/* Search form */
+.input-search-form {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.input-search-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #4F4A45;
+  border-right: 0;
+  border-radius: 8px 0 0 8px;
+  transition: all .3s ease;
+}
+
+.input-search-form input:hover,
+.input-search-form input:focus {
+  border-color: #f58449;
+}
+
+.input-search-form input:focus-visible {
+  outline: #f58449;
+}
+
+.input-search-form button {
+  padding: 10px 30px;
+  background: rgb(245,133,73);
+  background: linear-gradient(135deg, rgba(245,133,73,1) 0%, rgba(242,166,90,1) 100%);
+  color: #FFF;
+  border: 2px solid #f58449;
+  border-radius: 0 8px 8px 0;
+  transition: all 1s ease-out;
+  cursor: pointer;
+}
+
+.input-search-form button:hover {
+  background: linear-gradient(135deg, rgba(242,166,90,1) 0%, rgba(245,133,73,1) 100%);
 }

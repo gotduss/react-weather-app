@@ -20,6 +20,7 @@ const WeatherCard = () => {
     currentTemp: '',
     lowestTemp: '',
     highestTemp: '',
+    wind: '',
     pressure: '',
     humidity: '',
     hourlyTemp: [],
@@ -64,6 +65,7 @@ const WeatherCard = () => {
           currentTemp: data.currentConditions?.temp,
           lowestTemp: data.days[0]?.tempmin,
           highestTemp: data.days[0]?.tempmax,
+          wind: data.currentConditions?.windgust,
           pressure: data.days[0]?.pressure,
           humidity: data.days[0]?.humidity,
           hourlyTemp: data.days[0]?.hours || [],
@@ -111,6 +113,7 @@ const WeatherCard = () => {
                 currentTemp={currentWeatherData.currentTemp}
                 lowestTemp={currentWeatherData.lowestTemp}
                 highestTemp={currentWeatherData.highestTemp}
+                wind={currentWeatherData.wind}
                 pressure={currentWeatherData.pressure}
                 humidity={currentWeatherData.humidity}
                 unit={currentWeatherData.unit}
@@ -125,7 +128,7 @@ const WeatherCard = () => {
                 swipeable={true}
                 draggable={true}
                 centerMode={true}
-                additionalTransfrom={-currentWeatherData.currentHour * (100 / 1.275)}>
+                additionalTransfrom={-currentWeatherData.currentHour * (100 / 1.075)}>
                 {currentWeatherData.hourlyTemp.map((hour, index) => 
                   <HourlyWeather key={index} hourlyTemp={hour.temp} hourlyTime={hour.datetimeEpoch} hourlyImgName={hour.icon} unit={currentWeatherData.unit} />
                 )}

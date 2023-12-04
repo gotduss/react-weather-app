@@ -10,6 +10,7 @@ const CurrentWeather = ({
   currentTemp,
   lowestTemp,
   highestTemp,
+  wind,
   pressure,
   humidity,
   unit
@@ -39,13 +40,17 @@ const CurrentWeather = ({
         </div>
       </dl>
       <dl className="other">
-        <div className="pressure">
-          <dt>Pressure</dt>
-          <dd>{pressure}</dd>
+        <div className="wind">
+          <dt>Wind Gust</dt>
+          <dd>{wind}</dd>
         </div>
         <div className="humidity">
           <dt>Humidity</dt>
           <dd>{humidity}</dd>
+        </div>
+        <div className="pressure">
+          <dt>Pressure</dt>
+          <dd>{pressure}</dd>
         </div>
       </dl>
     </>

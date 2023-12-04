@@ -33,8 +33,6 @@ a:hover {
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
   max-width: 1300px;
   margin: 30px auto;
 }
@@ -51,8 +49,31 @@ h2 {
   margin-bottom: 24px;
 }
 
+.col-left {
+  width: 100%;
+  max-width: 800px;
+}
+
+aside {
+  width: 100%;
+  margin-top: 50px;
+}
+
 .col-left,
 aside {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+/* Responsive */
+@media (min-width: 576px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  aside {
+    width: auto;
+    margin-top: 0;
+  }
 }
