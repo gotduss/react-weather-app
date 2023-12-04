@@ -137,7 +137,6 @@ const WeatherCard = () => {
           <aside className="sidebar">
             <h2>Weekly Weather</h2>
             <section className="weekly-weather">
-              {console.log('weeklyWeatherData', weeklyWeatherData.slice(0, 7))}
               {weeklyWeatherData.slice(0, 7).map((day, index) => 
                 <WeeklyWeather
                   key={index}
