@@ -16,7 +16,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
@@ -24,7 +24,7 @@ jobs:
         run: npm install && npm run test
 
       - name: Build react application
-        run: REACT_APP_API_KEY=${{ secrets.API_KEY }} npm run build
+        run: REACT_APP_VCROS_API_KEY=${{ secrets.API_KEY }} REACT_APP_VCROS_API_URL=${{ secrets.API_URL }} npm run build
 
       - name: Deploy static site to S3 bucket
-        run: aws s3 sync ./build/ s3://${{ secrets.BUCKET }} --delete
+        run: aws s3 sync ./build/ s3://${{ secrets.AWS_BUCKET }} --delete
