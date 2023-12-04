@@ -1,0 +1,58 @@
+.weekly-weather {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+}
+
+.weekly-temps {
+  padding: 15px;
+  border-bottom: 1px solid #EEE;
+}
+
+.weekly-temps {
+  border-radius: 8px 8px 0 0;
+}
+
+.weekly-temps:last-child {
+  border-bottom: 0;
+  border-radius: 0 0 8px 8px;
+}
+
+.weekly-temps .weekday,
+.weekly-temps .temps {
+  text-align: center;
+}
+
+.weekly-temps .temps {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0;
+}
+
+.weekly-temps .temps .lowest {
+  padding-right: 10px;
+}
+
+.weekly-temps .temps .highest {
+  padding-left: 10px;
+}
+
+.weekly-temps .temps dt {
+  font-weight: 400;
+}
+
+.weekly-temps .temps dd {
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Today */
+.weekly-temps.today {
+  background-color: #4F4A45;
+}
+
+.weekly-temps.today p,
+.weekly-temps.today .temps .lowest,
+.weekly-temps.today .temps .highest {
+  color: #FFFFFF;
+}

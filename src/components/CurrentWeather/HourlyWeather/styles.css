@@ -1,0 +1,28 @@
+.hourly-weather {
+  background-color: #FFF;
+  border-radius: 0 0 8px 8px;
+}
+
+.hourly-weather .hourly-temps {
+  padding: 30px 10px;
+  text-align: center;
+  border-right: 1px solid #eee;
+}
+
+.hourly-weather .hourly-temps p {
+  color: #4F4A45;
+}
+
+.hourly-weather .hourly-temps p.current-temp {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+/* Current */
+.hourly-weather .hourly-temps.current {
+  background-color: #4F4A45;
+}
+
+.hourly-weather .hourly-temps.current p {
+  color: #FFFFFF;
+}
