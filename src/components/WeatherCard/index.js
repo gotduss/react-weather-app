@@ -127,7 +127,7 @@ const WeatherCard = () => {
                 swipeable={true}
                 draggable={true}
                 centerMode={true}
-                additionalTransfrom={-currentWeatherData.currentHour * (100 / 1.075)}>
+                additionalTransfrom={-currentWeatherData.currentHour * (100 / 1.275)}>
                 {currentWeatherData.hourlyTemp.map((hour, index) => 
                   <HourlyWeather key={index} hourlyTemp={hour.temp} hourlyTime={hour.datetimeEpoch} hourlyImgName={hour.icon} unit={currentWeatherData.unit} />
                 )}
