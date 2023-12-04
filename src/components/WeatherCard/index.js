@@ -54,10 +54,8 @@ const WeatherCard = () => {
 
         const data = await response.json();
 
-        console.log('data', data);
-
-        setCurrentWeatherData({
-          ...currentWeatherData,
+        setCurrentWeatherData((prevData) => ({
+          ...prevData,
           error: false,
           currentDate: data.days[0]?.datetime,
           address: data.resolvedAddress,
@@ -70,18 +68,19 @@ const WeatherCard = () => {
           humidity: data.days[0]?.humidity,
           hourlyTemp: data.days[0]?.hours || [],
           currentHour: new Date().getHours(),
-        });
+        }));
 
         setWeeklyWeatherData(data.days);
       } catch (error) {
-        setCurrentWeatherData({
-          ...currentWeatherData,
+        setCurrentWeatherData((prevData) => ({
+          ...prevData,
           error: true,
           errorMessage: 'An error occurred while fetching weather details. Please try again later.',
-        });
+        }));
       }
     }
     fetchWeatherData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWeatherData.unit, currentWeatherData.location]);
 
   // Used to switch between metric (Degrees) and us (Fahrenheit)
