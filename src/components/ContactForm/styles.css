@@ -63,3 +63,9 @@
 .contact-form .actions button:hover {
   background: linear-gradient(135deg, rgba(242,166,90,1) 0%, rgba(245,133,73,1) 100%);
 }
+
+.contact-form .actions button:disabled {
+  background: #eee;
+  border-color: #eee;
+  cursor: not-allowed;
+}
